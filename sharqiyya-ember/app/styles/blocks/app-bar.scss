@@ -1,0 +1,86 @@
+.app-bar {
+  background-color: #262261;
+  @include until-desktop {
+    display: none;
+  }
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.app-bar__max {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  height: 68px;
+  background-color: #262261;
+  @include maxwidth
+}
+
+.app-bar__left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+.app-bar__middle {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.app-bar__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.app-bar__element:hover {
+  color: #F8A62B;
+}
+
+.app-bar__element-right {
+  margin-right: 35px;
+}
+
+.app-bar__element-left {
+  margin-left: 22px;
+}
+
+.app-bar__location {
+  display: flex;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+}
+
+.app-bar__location-logo {
+  width: 15px;
+  height: 15px;
+  background-image: url('/../../images/icons/location.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.app-bar__add-event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 36px;
+  border-radius: 5px;
+  background-color: #F8A62B;
+}
+
+.app-bar__add-event:hover {
+  background-color: white;
+  color: #F8A62B;
+}
+
+.app-bar__menu {
+  cursor: pointer;
+}

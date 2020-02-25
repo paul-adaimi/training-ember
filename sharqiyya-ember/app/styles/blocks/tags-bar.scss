@@ -1,0 +1,52 @@
+.tags-bar {
+  height: 70px;
+  overflow-y: hidden;
+}
+
+.tags-bar__container {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  font-family: Montserrat;
+  overflow-x: scroll;
+  @include maxwidth;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.tags-bar__tag {
+  font-size: 13px;
+  font-family: Montserrat;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #9E9995;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.tags-bar__tag:hover {
+  color: #F8A62B;
+}
+
+.tags-bar__tag_is-selected {
+  background-color: #F8A62B;
+  color: white;
+}
+
+.tags-bar__tag_is-selected:hover {
+  color: #9E9995;
+}
+
+.tags-bar__tag_color_orange {
+  color: #F8A62B;
+}
+
+.tags-bar__tag_color_orange:hover {
+  color: #9E9995;
+}

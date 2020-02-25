@@ -1,0 +1,25 @@
+.back-bar {
+  width: 100%;
+  @include maxwidth;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-top: 68px;
+  @include for-phone-only {
+    margin-top: 55px;
+  }
+}
+
+.back-bar__back {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 60px;
+  opacity: 0.4;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.back-bar__back-image {
+  margin-right: 5px;
+}

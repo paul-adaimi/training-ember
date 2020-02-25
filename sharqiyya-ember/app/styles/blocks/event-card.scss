@@ -1,0 +1,101 @@
+.event-card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-right: 20px;
+  width: 298px;
+  height: 330px;
+  background-color: white;
+  border-bottom: 2px solid rgba(0,0,0,0.16);
+  margin-bottom: 20px;
+  transition: 0.3s;
+  @include for-phone-only {
+    width: 350px;
+  }
+}
+
+.event-card:hover {
+  box-shadow: 0px 10px 20px black;
+  transform: translateY(-10px);
+}
+
+.event-card__like-button {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 150px;
+  left: 248px;
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  z-index: 3;
+  background-color: white;
+  box-shadow: 0px 0px 1px;
+  cursor: pointer;
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.event-card__like-button_liked {
+  background-color: #F8A62B;
+}
+
+.event-card ~ .event-card ~ .event-card {
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.event-card__image {
+  height: 168px;
+}
+
+.event-card__details {
+  height: 161px;
+  display: flex;
+  margin-left: 12px;
+  margin-right: 20px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.event-card__from-to {
+  font-family: Montserrat;
+  font-size: 11px;
+  color: #EB930F;
+  text-transform: uppercase;
+}
+
+.event-card__title {
+  font-family: Roboto Slab;
+  font-weight: bold;
+  font-size: 14px;
+  color: #404040;
+}
+
+.event-card__icon {
+  margin-right: 5px;
+}
+
+.event-card__timing-and-location {
+  display: flex;
+  align-items: baseline;
+  font-family: Roboto Slab;
+  font-size: 13px;
+  color: #7B7B7B;
+}
+
+.event-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Montserrat;
+  font-size: 11px;
+  color: #9D9D9D;
+}
+
+.event-card__tag:not(:last-child) {
+  margin-right: 10px;
+}

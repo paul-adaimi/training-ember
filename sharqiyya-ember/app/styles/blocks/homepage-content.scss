@@ -1,0 +1,40 @@
+.homepage-content {
+  @include maxwidth;
+  @include for_phone_only {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.homepage-content__events-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 47px;
+  justify-content: center;
+}
+
+.homepage-content__title {
+  color: #404040;
+  font-size: 14px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+}
+
+.homepage-content__see-more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.homepage-content__phone-more {
+  display: none;
+  @include for-phone-only {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+}

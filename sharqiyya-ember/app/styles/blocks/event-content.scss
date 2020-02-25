@@ -1,0 +1,9 @@
+.event-content {
+  display: flex;
+  @include maxwidth;
+  height: 100%;
+
+  @include for-phone-only {
+    flex-direction: column;
+  }
+}

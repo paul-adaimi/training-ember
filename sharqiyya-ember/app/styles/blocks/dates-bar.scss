@@ -1,0 +1,106 @@
+.dates-bar {
+  background-color: #2E2972;
+  @include until-desktop {
+    margin-top: 68px;
+  }
+  @include for-phone-only {
+    margin-top: 55px;
+  }
+}
+
+.dates-bar__max {
+  display: flex;
+  height: 50px;
+  font-family: Montserrat;
+  @include maxwidth
+}
+
+.dates-bar__left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.dates-bar__right {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  background-color: #100D46;
+  width: 250px;
+  flex-shrink: 0;
+
+  @include for_phone_only {
+    display: none;
+  }
+}
+
+.dates-bar__arrow {
+  padding-left: 20px;
+  padding-right: 20px;
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.dates-bar__arrow-down {
+  display: none;
+  @include for-phone-only {
+    display: inline;
+  }
+}
+
+.dates-bar__box {
+  width: 38px;
+  height: 38px;
+  color: white;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dates-bar__box_month-year {
+  background-color: #100D46;
+  @include for_phone_only {
+    width: 53px;
+  }
+}
+
+.dates-bar__hide-scroll {
+  height: 50px;
+  overflow: hidden;
+}
+
+.dates-bar__dates-list {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.dates-bar__box_today {
+  color: #2E2972;
+  background-color: white;
+}
+
+.dates-bar__box-top {
+  font-size: 13px;
+}
+
+.dates-bar__box-bottom {
+  font-size: 10px;
+}
+
+.dates-bar__search {
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  font-size: 12px;
+  color: white;
+  margin-left: 15px;
+}
