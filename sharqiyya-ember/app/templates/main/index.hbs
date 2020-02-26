@@ -1,0 +1,59 @@
+<div class="homepage">
+  <div class="tags-bar">
+    <div class="tags-bar__container">
+      <a href="javascript:void(0)" class="tags-bar__tag tags-bar__tag_is-selected">
+        Everything
+      </a>
+      {{#each model.tags as |tag|}}
+        <a href="javascript:void(0)" class="tags-bar__tag">
+          {{tag.title}}
+        </a>
+      {{/each}}
+      <a href="javascript:void(0)" class="tags-bar__tag">
+        More
+      </a>
+    </div>
+  </div>
+
+  <div class="homepage-content">
+    <div class="homepage-content__title">
+      15 EVENTS FOUND ON SATURDAY AUGUST 9
+    </div>
+    <div class="homepage-content__events-list">
+
+      {{#each model.events as |event|}}
+        <div class="event-card">
+          <div class="event-card__like-button event-card__like-button_liked">
+            <img src="images/icons/heart-white.svg"/>
+          </div>
+          <img src='images/events/event-{{event.id}}.png' class="event-card__image" />
+          <div class="event-card__details">
+            <div class="event-card__from-to">
+              {{event.date}}
+            </div>
+            <div class="event-card__title">
+              {{event.title}}
+            </div>
+            <div class="event-card__timing-and-location">
+              <img class="event-card__icon" src="images/icons/time.svg">
+              {{event.time}}
+            </div>
+            <div class="event-card__timing-and-location">
+              <img class="event-card__icon" src="images/icons/location.svg">
+              {{event.location}}
+            </div>
+            <div class="event-card__tags">
+              <div class="event-card__tag"># Arts & Culture</div>
+              <div class="event-card__tag">#Conferences & Workshops</div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+
+    </div>
+
+    <div class="homepage-content__see-more">
+      <button class="tags-bar__tag tags-bar__tag_color_orange">See more events (213)</button>
+    </div>
+  </div>
+</div>
