@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default function(server) {
 
   /*
@@ -10,19 +12,21 @@ export default function(server) {
       title: item
     })
   }
-  
+
   let event = server.create('event', {
     title: 'BIG CITY LIFE - Exhibition Opening'
   });
-  event.createEventDate({
-    date: '01-01-2020',
-    startTime: '9:00am',
-    endTime: '11:00pm'
-  });
 
-  event.createEventDate({
-    date: '01-01-2021',
-    startTime: '10:00am',
-    endTime: '1:00pm'
-  });
+  let startDate= moment("01-11-2020");
+  let endDate = moment("03-08-2020");
+
+  var range = endDate.diff(startDate, 'days');
+
+  for(let i=0; i<range+1; i++){
+    event.createEventDate({
+      date: moment("01-11-2020").add(i,'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+  }
 }
