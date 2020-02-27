@@ -1,3 +1,15 @@
+<div class="dates-bar">
+  <div class="dates-bar__max">
+    {{dates-bar max= 30}}
+    <img class="dates-bar__arrow" src="/images/icons/forward-arrow-grey.svg">
+
+    <div class="dates-bar__right">
+      <img src="/images/icons/search.svg">
+      <input type="search" placeholder="Search for an event or activity" class="dates-bar__search" />
+    </div>
+  </div>
+</div>
+
 <div class="homepage">
   <div class="tags-bar">
     <div class="tags-bar__container">
@@ -21,7 +33,6 @@
     </div>
 
     {{events-list
-      day="02-26-2020"
       events=model.events
     }}
 

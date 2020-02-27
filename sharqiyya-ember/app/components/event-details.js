@@ -23,14 +23,9 @@ export default Component.extend({
   }),
 
   tags:computed('tags',function() {
-
+    console.log(this.tags);
     return this.tags.splice;
   }),
 
-  actions: {
-    showEvent(){
-      this.router.transitionTo('main.event',this.id);
-    }
-  }
 
 })

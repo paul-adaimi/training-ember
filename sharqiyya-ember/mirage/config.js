@@ -16,6 +16,11 @@ export default function() {
   this.get('/events', function(schema) {
     return schema.events.all();
   })
+
+  this.get('/events/:id', function(schema, request) {
+    return schema.events.find(request.params.id);
+  })
+
   /*
     Shorthand cheatsheet:
 

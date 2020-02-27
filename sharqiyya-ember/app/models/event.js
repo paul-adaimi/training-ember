@@ -10,4 +10,6 @@ export default DS.Model.extend({
   tags: hasMany('tag'),
 
   location: attr('string'),
+
+  details: attr('string')
 });

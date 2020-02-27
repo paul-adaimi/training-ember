@@ -1,0 +1,78 @@
+<div class="event-details">
+  <h1 class="event-details__night" >{{title}}</h1>
+  <div class="event-details__date">
+    <div class="event-details__date-left">
+      <div class="event-details__date-box">
+        <div class="event-details__date-box-text-small">AUG</div>
+        <div class="event-details__date-box-text-big">10</div>
+        <div class="event-details__date-box-text-plus">+</div>
+      </div>
+      <div class="event-details__date-text-day-time">
+        <meta itemprop="startDate" content="2016-08-10T09:00" />
+        <meta itemprop="endDate" content="2016-08-10T17:00" />
+        <div class="event-details__date-text-day">
+          Tuesday Aug 10 2016
+        </div>
+        <div class="event-details__date-text-time">
+          {{timeString}}
+        </div>
+      </div>
+      <img class="event-details__like-button" alt="Like Button" src="/images/icons/like.svg"/>
+    </div>
+    <div class="event-details__date-right">
+      <div class="event-details__show-text">
+        Show more dates
+      </div>
+      <div class="event-details__show-text-mobile">More</div>
+      <img class="event-details__show-arrow" alt="Right Arrow Icon" src="/images/icons/arrow-right.svg">
+    </div>
+  </div>
+
+  <div class="event-details__dates-saved">
+    <img class="event-details__dates-saved-heart" alt="Heart Icon" src="/images/icons/heart.svg">
+    <p>2 dates saved</p>
+  </div>
+
+  <div class="event-details__location">
+    <div class="event-details__location-left">
+      <img class="event-details__location-image" alt="Location Icon" src="/images/icons/location-grey.svg">
+      <p class="event-details__location-text">{{location}}</p>
+      <meta itemprop="latitude" content="33.8914" />
+      <meta itemprop="longitude" content="35.5054" />
+    </div>
+    <div class="event-details__location-right">
+      <div class="event-details__show-text">
+        Show map
+      </div>
+      <img class="event-details__show-arrow" alt="Right Arrow Icon" src="/images/icons/arrow-right.svg">
+    </div>
+  </div>
+
+  <div class="event-details__shares-and-links">
+    <div class="event-details__shares">
+      <div class="event-details__shares-number">214</div>
+      <div class="event-details__shares-text">Shares</div>
+    </div>
+    <div class="event-details__links">
+      <img src="/images/icons/message-link.svg" alt="Message Icon">
+      <img src="/images/icons/twitter-link.svg" alt="Twitter Icon">
+      <img src="/images/icons/whatsapp-link.svg" alt="Whatsapp Icon">
+      <img src="/images/icons/facebook-link.svg" alt="Facebook Icon">
+    </div>
+  </div>
+
+  <div class="event-details__text">
+    <div class="event-details__show-text">
+      {{#each tags as |tag|}}
+        #{{tag.title}}
+      {{/each}}
+    </div>
+    <div class="event-details__text-description">
+      {{details}}
+    </div>
+    <div class="event-details__show-text">
+      {{url}}
+    </div>
+  </div>
+
+</div>
