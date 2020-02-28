@@ -23,6 +23,7 @@ export default function(server) {
     location: 'Salon Beyrouth restaurant, Mohammed Abdel Baki street, Beirut, Lebanon',
     url:'www.facebook.com/Human-Lie-Detection-547…',
     tags:[allTags[0]],
+    isFavorite:false,
     details:`A dance performance by Ali Chahrour
 January 24 to 27, 2019 - Al Madina Theatre, Beirut
 
@@ -42,6 +43,7 @@ Text adaptation by: Hala Omran and Junaid Sarieddine / Light design and technica
     location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
     url:'www.github.com',
     tags:allTags,
+    isFavorite:false,
     details:` DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2`
   });
 

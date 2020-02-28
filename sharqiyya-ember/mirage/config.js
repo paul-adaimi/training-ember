@@ -32,6 +32,8 @@ export default function() {
     return schema.events.find(request.params.id);
   })
 
+  this.patch('/events/:id');
+
   /*
     Shorthand cheatsheet:
 

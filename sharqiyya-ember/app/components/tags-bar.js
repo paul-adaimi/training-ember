@@ -7,11 +7,13 @@ export default Component.extend({
 
   onFilter: null,
 
-  selected:"0",
+  selectedId:"0",
 
-  isSelected: computed('selected',function(test) {
-    console.log(test);
-    return "tags-bar__tag_is-selected";
-  }),
+  actions: {
+    onFilter(tag, tagId) {
+      this.set('selectedId',tagId);
+      this.onFilter(tag);
+    }
+  }
 
 })

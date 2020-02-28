@@ -1,22 +1,25 @@
 import Controller from '@ember/controller';
 import { hash } from 'rsvp';
+import { task } from 'ember-concurrency';
 
 export default Controller.extend({
-  findModel({ tag } = {}) {
-    hash({
+
+  findModel: task(function * ({ tag } = {}) {
+    let temp = hash({
       events: this.store.query('event', {
         include: 'event-dates,tags',
         tag
       }),
       tags: this.store.findAll('tag')
-    }).then(model => {
-      this.set('model', model);
-    })
-  },
+    });
+
+    let model = yield temp;
+    this.set('model', model);
+  }),
 
   actions: {
     onFilter(tag) {
-      this.findModel({ tag });
+      this.findModel.perform({ tag });
     }
   }
-})
+});

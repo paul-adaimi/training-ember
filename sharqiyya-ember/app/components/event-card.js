@@ -1,34 +1,41 @@
 import Component from '@ember/component';
 import moment from 'moment';
 import { computed } from '@ember/object';
-import {inject as service} from "@ember/service";
-
+import { inject as service } from '@ember/service';
+import { task } from 'ember-concurrency';
 
 export default Component.extend({
-  tagName:'',
+  tagName: '',
 
   router: service(),
 
-  dateString: computed('dates.[]', function() {
-    // console.log("this.dates");
-    let start=moment(this.dates.firstObject.date).format("MMM D");
+  onUpdate: null,
 
-    let end=moment(this.dates.lastObject.date).format("MMM D");
-
+  dateString: computed('dates.firstObject.date', 'dates.lastObject.date', function() {
+    let start = moment(this.dates.firstObject.date).format('MMM D');
+    let end = moment(this.dates.lastObject.date).format('MMM D');
     return `${start} till ${end}`;
   }),
-  timeString: computed('day',function() {
+
+  timeString: computed('dates.firstObject.{startTime,endTime}', function() {
     return `${this.dates.firstObject.startTime} till ${this.dates.firstObject.endTime}`;
   }),
 
-  tags:computed('tags',function() {
-    return this.tags.splice;
+  updateIsFavoriteTask: task(function *() {
+    this.event.set('isFavorite', !this.event.isFavorite);
+    try {
+      yield this.event.save();
+    } catch (e) {
+      this.event.rollbackAttributes();
+      throw e;
+    }
   }),
 
   actions: {
-    showEvent(){
-      this.router.transitionTo('main.event',this.id);
+    showEvent(event) {
+      if (!event.target.classList.contains('js-like-button')) {
+        this.router.transitionTo('main.event', this.id);
+      }
     }
   }
-
-})
+});

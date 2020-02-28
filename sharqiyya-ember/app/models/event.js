@@ -9,6 +9,8 @@ export default DS.Model.extend({
 
   tags: hasMany('tag'),
 
+  isFavorite: attr('boolean'),
+
   location: attr('string'),
 
   details: attr('string')

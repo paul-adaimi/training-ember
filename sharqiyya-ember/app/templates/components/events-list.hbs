@@ -1,7 +1,17 @@
 <div class="homepage-content__events-list">
 
   {{#each events as |event|}}
-    {{event-card tags=event.tags day=day id=event.id dates=event.eventDates title=event.title location=event.location}}
+    {{event-card
+      day=day
+      event=event
+
+      isFavorite=event.isFavorite
+      tags=event.tags
+      id=event.id
+      dates=event.eventDates
+      title=event.title
+      location=event.location
+    }}
   {{/each}}
 
 </div>

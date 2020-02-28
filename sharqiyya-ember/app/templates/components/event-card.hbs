@@ -1,7 +1,5 @@
 <div class="event-card" onclick={{action "showEvent"}}>
-  <div class="event-card__like-button event-card__like-button_liked">
-    <img src="/images/icons/heart-white.svg"/>
-  </div>
+  <div onclick={{perform updateIsFavoriteTask}} class="event-card__like-button js-like-button {{if isFavorite "event-card__like-button_liked"}}"></div>
   <img src='/images/events/event-{{id}}.png' class="event-card__image" />
   <div class="event-card__details">
     <div class="event-card__from-to">
