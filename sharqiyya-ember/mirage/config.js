@@ -13,8 +13,19 @@ export default function() {
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
   this.get('/tags');
 
-  this.get('/events', function(schema) {
-    return schema.events.all();
+  this.get('/events', function(schema, { queryParams }) {
+    let allEvents=schema.events.all();
+    if(queryParams.tag === undefined) return allEvents;
+
+    let allTags= schema.tags.all();
+    let eventTagId= schema.tags.where({title:queryParams.tag}).models[0].attrs.id;
+    let allEventsArray=allEvents.models;
+
+    allEventsArray.forEach((event,i) => {
+      if(!event.attrs.tagIds.includes(""+eventTagId))allEventsArray.splice(i,1);
+    })
+
+    return allEvents;
   })
 
   this.get('/events/:id', function(schema, request) {

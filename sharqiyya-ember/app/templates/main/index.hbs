@@ -11,22 +11,10 @@
 </div>
 
 <div class="homepage">
-  <div class="tags-bar">
-    <div class="tags-bar__container">
-      <a href="javascript:void(0)" class="tags-bar__tag tags-bar__tag_is-selected">
-        Everything
-      </a>
-      {{#each model.tags as |tag|}}
-        <a href="javascript:void(0)" class="tags-bar__tag">
-          {{tag.title}}
-        </a>
-      {{/each}}
-      <a href="javascript:void(0)" class="tags-bar__tag">
-        More
-      </a>
-    </div>
-  </div>
-
+  {{tags-bar
+    tags=model.tags
+    onFilter=(action "onFilter")
+  }}
   <div class="homepage-content">
     <div class="homepage-content__title">
       15 EVENTS FOUND ON SATURDAY AUGUST 9

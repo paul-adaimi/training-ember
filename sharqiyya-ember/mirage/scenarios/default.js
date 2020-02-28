@@ -7,16 +7,22 @@ export default function(server) {
     This data will not be loaded in your tests.
   */
   // server.createList('tag', 9);
-  for (let item of ['Everything', 'Arts & Culture', 'Sports']) {
-    server.create('tag', {
+
+  let allTags=[];
+
+  for (let item of ['Arts & Culture', 'Sports']) {
+
+    let tempTag=server.create('tag',{
       title: item
     })
+    allTags.push(tempTag);
   }
 
   let event = server.create('event', {
     title: 'BIG CITY LIFE - Exhibition Opening',
     location: 'Salon Beyrouth restaurant, Mohammed Abdel Baki street, Beirut, Lebanon',
     url:'www.facebook.com/Human-Lie-Detection-547…',
+    tags:[allTags[0]],
     details:`A dance performance by Ali Chahrour
 January 24 to 27, 2019 - Al Madina Theatre, Beirut
 
@@ -31,12 +37,26 @@ Directed and choreographed by: Ali Chahrour / Performed by: Hala Omran, Aya Metw
 Text adaptation by: Hala Omran and Junaid Sarieddine / Light design and technical director: Guillaume Tesson / Sound design: Khyam Allami / Costumes: Ahmed Amer / Stage manager and Assistant Director: Haera Slim / Production Manager: Christel Salem and Haera Slim / Graphic design and Communications: be:kult / Poster and brochure photography.`
   });
 
+  let event2 = server.create('event', {
+    title: 'The Other',
+    location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
+    url:'www.github.com',
+    tags:allTags,
+    details:` DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2`
+  });
+
   let startDate= moment("01-11-2020");
   let endDate = moment("03-08-2020");
 
   var range = endDate.diff(startDate, 'days');
 
   for(let i=0; i<range+1; i++){
+    event2.createEventDate({
+      date: moment("01-11-2020").add(i,'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+
     event.createEventDate({
       date: moment("01-11-2020").add(i,'days').calendar(),
       startTime: '9:00am',
@@ -44,11 +64,9 @@ Text adaptation by: Hala Omran and Junaid Sarieddine / Light design and technica
     });
   }
 
-  event.createTag({
-    title: "Arts & Culture"
-  })
+  event.tags=allTags;
 
-  event.createTag({
-    title: "Sports"
-  })
+
+
+
 }

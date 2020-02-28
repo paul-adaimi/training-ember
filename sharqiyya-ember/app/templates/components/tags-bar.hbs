@@ -1,0 +1,15 @@
+<div class="tags-bar">
+  <div class="tags-bar__container">
+    <a onclick={{action onFilter undefined}} href="javascript:void(0)" class="tags-bar__tag {{isSelected}}">
+      Everything
+    </a>
+    {{#each tags as |tag|}}
+      <a onclick={{action onFilter tag.title}} href="javascript:void(0)" class="tags-bar__tag {{isSelected}}">
+        {{tag.title}}
+      </a>
+    {{/each}}
+    <a href="javascript:void(0)" class="tags-bar__tag">
+      More
+    </a>
+  </div>
+</div>

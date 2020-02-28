@@ -18,12 +18,10 @@ export default Component.extend({
     return `${start} till ${end}`;
   }),
   timeString: computed('day',function() {
-
     return `${this.dates.firstObject.startTime} till ${this.dates.firstObject.endTime}`;
   }),
 
   tags:computed('tags',function() {
-
     return this.tags.splice;
   }),
 
