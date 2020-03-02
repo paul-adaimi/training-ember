@@ -10,10 +10,12 @@
   </header>
 
   <div class="back-bar">
-    <div class="back-bar__back">
-      <img class="back-bar__back-image" alt="Back" src="/images/icons/back.svg">
-      Back
-    </div>
+    {{#link-to "main.index"}}
+      <div class="back-bar__back">
+        <img class="back-bar__back-image" alt="Back" src="/images/icons/back.svg">
+        Back
+      </div>
+    {{/link-to}}
   </div>
 
   <article class="event-content">

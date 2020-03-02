@@ -8,23 +8,23 @@ export default function(server) {
   */
   // server.createList('tag', 9);
 
-  let allTags=[];
+  let allTags = [];
 
   for (let item of ['Arts & Culture', 'Sports']) {
 
-    let tempTag=server.create('tag',{
+    let tempTag = server.create('tag', {
       title: item
-    })
+    });
     allTags.push(tempTag);
   }
 
   let event = server.create('event', {
     title: 'BIG CITY LIFE - Exhibition Opening',
     location: 'Salon Beyrouth restaurant, Mohammed Abdel Baki street, Beirut, Lebanon',
-    url:'www.facebook.com/Human-Lie-Detection-547…',
-    tags:[allTags[0]],
-    isFavorite:false,
-    details:`A dance performance by Ali Chahrour
+    url: 'www.facebook.com/Human-Lie-Detection-547…',
+    tags: [allTags[0]],
+    isFavorite: false,
+    details: `A dance performance by Ali Chahrour
 January 24 to 27, 2019 - Al Madina Theatre, Beirut
 
 Night is a dance concert whose approach and aesthetics draw their inspiration from the dense archive of love and romance in classical Arabic poetry and from contemporary  stories of lovers and their cruel separation.
@@ -41,34 +41,102 @@ Text adaptation by: Hala Omran and Junaid Sarieddine / Light design and technica
   let event2 = server.create('event', {
     title: 'The Other',
     location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
-    url:'www.github.com',
-    tags:allTags,
-    isFavorite:false,
-    details:` DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2`
+    url: 'www.github.com',
+    tags: allTags,
+    isFavorite: false,
+    details: ' DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2'
   });
 
-  let startDate= moment("01-11-2020");
-  let endDate = moment("03-08-2020");
+  let event3 = server.create('event', {
+    title: 'The Other',
+    location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
+    url: 'www.github.com',
+    tags: [allTags[1]],
+    isFavorite: false,
+    details: ' DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2'
+  });
 
-  var range = endDate.diff(startDate, 'days');
+  let event4 = server.create('event', {
+    title: 'The Other',
+    location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
+    url: 'www.github.com',
+    tags: allTags,
+    isFavorite: false,
+    details: ' DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2'
+  });
 
-  for(let i=0; i<range+1; i++){
+  let event5 = server.create('event', {
+    title: 'The Other',
+    location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
+    url: 'www.github.com',
+    tags: [allTags[0]],
+    isFavorite: false,
+    details: ' DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2'
+  });
+
+  let event6 = server.create('event', {
+    title: 'The Other',
+    location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
+    url: 'www.github.com',
+    tags: allTags,
+    isFavorite: false,
+    details: ' DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2'
+  });
+
+  let event7 = server.create('event', {
+    title: 'The Other',
+    location: 'Sunflower - Douwar el Shams Beirut, Lebanon 4011',
+    url: 'www.github.com',
+    tags: [allTags[1]],
+    isFavorite: false,
+    details: ' DETAILS kejfhekhf kjhekfh kehf khfk hfkehf kehfkj hekfh kejfh ekfh kefh kehf hekfj hekf hekfh kehf kjehfeiu hwflfkfhlkdhfsifgkj sg fghkjksfbgislkjfgdn dfgneirgk ndfjgndfkgndfk gndfkgjdk ngk 2'
+  });
+
+  let startDate = moment('01-11-2020');
+  let endDate = moment('03-08-2020');
+
+  let range = endDate.diff(startDate, 'days');
+
+  for (let i = 0; i < range + 1; i++) {
+    event7.createEventDate({
+      date: moment('01-11-2020').add(i, 'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+    event6.createEventDate({
+      date: moment('01-11-2020').add(i, 'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+    event5.createEventDate({
+      date: moment('01-11-2020').add(i, 'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+    event4.createEventDate({
+      date: moment('01-11-2020').add(i, 'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+    event3.createEventDate({
+      date: moment('01-11-2020').add(i, 'days').calendar(),
+      startTime: '9:00am',
+      endTime: '11:00pm'
+    });
+
     event2.createEventDate({
-      date: moment("01-11-2020").add(i,'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').calendar(),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
 
     event.createEventDate({
-      date: moment("01-11-2020").add(i,'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').calendar(),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
   }
 
-  event.tags=allTags;
-
-
-
+  event.tags = allTags;
 
 }

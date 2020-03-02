@@ -9,8 +9,8 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('main', { path: '/' }, function() {
     this.route('index', { path: '/' });
-    this.route('event', {path: 'event/:event_id'});
-  })
+    this.route('event', { path: 'event/:event_id' });
+  });
 });
 
 export default Router;

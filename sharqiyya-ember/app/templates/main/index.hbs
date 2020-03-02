@@ -12,7 +12,7 @@
 
 <div class="homepage">
   {{tags-bar
-    tags=model.tags
+    tags=tags
     onFilter=(action "onFilter")
   }}
   <div class="homepage-content">
@@ -21,11 +21,13 @@
     </div>
 
     {{events-list
-      events=model.events
+      events=events
     }}
 
-    <div class="homepage-content__see-more">
-      <button class="tags-bar__tag tags-bar__tag_color_orange">See more events (213)</button>
-    </div>
+    {{#if hasMoreEvents}}
+      <div onclick={{action 'seeMoreEvents'}} class="homepage-content__see-more">
+        <button class="tags-bar__tag tags-bar__tag_color_orange">See more events (213)</button>
+      </div>
+    {{/if}}
   </div>
 </div>

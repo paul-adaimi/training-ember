@@ -14,23 +14,32 @@ export default function() {
   this.get('/tags');
 
   this.get('/events', function(schema, { queryParams }) {
-    let allEvents=schema.events.all();
-    if(queryParams.tag === undefined) return allEvents;
+    let allEvents = schema.events.all();
+    let allEventsArray = allEvents.models;
 
-    let allTags= schema.tags.all();
-    let eventTagId= schema.tags.where({title:queryParams.tag}).models[0].attrs.id;
-    let allEventsArray=allEvents.models;
+    let pageNumber = queryParams['page[number]'];
+    let pageSize = queryParams['page[size]'];
 
-    allEventsArray.forEach((event,i) => {
-      if(!event.attrs.tagIds.includes(""+eventTagId))allEventsArray.splice(i,1);
-    })
+    if (queryParams.tag === undefined) {
+      allEventsArray.splice(0, (pageNumber - 1) * pageSize);
+      allEventsArray.splice(pageSize, 9e9);
+      return allEvents;
+    }
+
+    let eventTagId = schema.tags.where({ title: queryParams.tag }).models[0].attrs.id;
+
+    allEventsArray.forEach((event, i) => {
+      if (!event.attrs.tagIds.includes(`${eventTagId}`)) {
+        allEventsArray.splice(i, 1);
+      }
+    });
 
     return allEvents;
-  })
+  });
 
   this.get('/events/:id', function(schema, request) {
     return schema.events.find(request.params.id);
-  })
+  });
 
   this.patch('/events/:id');
 

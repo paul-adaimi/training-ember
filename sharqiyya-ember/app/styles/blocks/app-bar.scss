@@ -31,6 +31,10 @@
   color: white;
 }
 
+.app-bar__logo {
+  cursor: pointer;
+}
+
 .app-bar__right {
   flex: 1;
   display: flex;
