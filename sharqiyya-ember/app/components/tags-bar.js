@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import moment from 'moment';
 import { computed } from '@ember/object';
 
 export default Component.extend({
@@ -7,13 +6,22 @@ export default Component.extend({
 
   onFilter: null,
 
-  selectedId:"0",
+  filter: null,
+
+  selectedTag: computed('filter', function() {
+    return this.filter || 'Everything';
+  }),
 
   actions: {
-    onFilter(tag, tagId) {
-      this.set('selectedId',tagId);
+    onFilter(tag) {
+      if (tag === undefined) {
+        this.set('selectedTag', 'Everything');
+      } else {
+        this.set('selectedTag', tag);
+      }
+
       this.onFilter(tag);
     }
   }
 
-})
+});

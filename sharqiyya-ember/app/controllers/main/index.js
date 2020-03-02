@@ -5,6 +5,10 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
 
+  queryParams: ['filter'],
+
+  filter: null,
+
   pageNumber: 1,
 
   pageSize: 4,
@@ -38,7 +42,7 @@ export default Controller.extend({
     this.set('loadingMoreEvents', true);
     let events = yield this.store.query('event', {
       include: 'event-dates,tags',
-      tag,
+      tag: this.filter || tag,
       page: {
         number: this.pageNumber,
         size: this.pageSize
@@ -76,6 +80,7 @@ export default Controller.extend({
     onFilter(tag) {
       this.set('events', []);
       this.set('pageNumber', 1);
+      this.set('filter', tag);
       this.findEvents.perform({ tag });
     },
 

@@ -1,10 +1,10 @@
 <div class="tags-bar">
   <div class="tags-bar__container">
-    <a onclick={{action "onFilter" undefined "0"}} href="javascript:void(0)" class="tags-bar__tag {{if (eq "0" selectedId) "tags-bar__tag_is-selected"}}">
+    <a onclick={{action "onFilter" undefined "Everything"}} href="javascript:void(0)" class="tags-bar__tag {{if (eq "Everything" selectedTag) "tags-bar__tag_is-selected"}}">
       Everything
     </a>
     {{#each tags as |tag|}}
-      <a onclick={{action "onFilter" tag.title tag.id}} href="javascript:void(0)" class="tags-bar__tag {{if (eq tag.id selectedId) "tags-bar__tag_is-selected"}}">
+      <a onclick={{action "onFilter" tag.title}} href="javascript:void(0)" class="tags-bar__tag {{if (eq tag.title selectedTag) "tags-bar__tag_is-selected"}}">
         {{tag.title}}
       </a>
     {{/each}}
