@@ -11,14 +11,14 @@ export default Component.extend({
 
   onUpdate: null,
 
-  dateString: computed('dates.firstObject.date', 'dates.lastObject.date', function() {
-    let start = moment(this.dates.firstObject.date).format('MMM D');
-    let end = moment(this.dates.lastObject.date).format('MMM D');
+  dateString: computed('this.event.eventDates.firstObject.date', 'this.event.eventDates.lastObject.date', function() {
+    let start = moment(this.event.eventDates.firstObject.date).format('MMM D');
+    let end = moment(this.event.eventDates.lastObject.date).format('MMM D');
     return `${start} till ${end}`;
   }),
 
-  timeString: computed('dates.firstObject.{startTime,endTime}', function() {
-    return `${this.dates.firstObject.startTime} till ${this.dates.firstObject.endTime}`;
+  timeString: computed('this.event.eventDates.firstObject.{startTime,endTime}', function() {
+    return `${this.event.eventDates.firstObject.startTime} till ${this.event.eventDates.firstObject.endTime}`;
   }),
 
   updateIsFavoriteTask: task(function *() {
@@ -34,7 +34,7 @@ export default Component.extend({
   actions: {
     showEvent(event) {
       if (!event.target.classList.contains('js-like-button')) {
-        this.router.transitionTo('main.event', this.id);
+        this.router.transitionTo('main.event', this.event.id);
       }
     }
   }

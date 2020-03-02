@@ -9,6 +9,10 @@ export default Controller.extend({
 
   pageSize: 4,
 
+  isLoading: false,
+
+  loadingMoreEvents: false,
+
   events: computed(() => []),
 
   tags: computed(() => []),
@@ -16,7 +20,9 @@ export default Controller.extend({
   hasMoreEvents: true,
 
   setupControllerTask: task(function * () {
+    this.set('isLoading', true);
     yield all([this.findEvents.perform(), this.findTags.perform()]);
+    this.set('isLoading', false);
   }),
 
   resetControllerTask: task(function * () {
@@ -29,6 +35,7 @@ export default Controller.extend({
   }),
 
   findEvents: task(function * ({ tag } = {}) {
+    this.set('loadingMoreEvents', true);
     let events = yield this.store.query('event', {
       include: 'event-dates,tags',
       tag,
@@ -43,6 +50,8 @@ export default Controller.extend({
     if (events.length < this.pageSize) {
       this.set('hasMoreEvents', false);
     }
+
+    this.set('loadingMoreEvents', false);
   }),
 
   // findModel: task(function * ({ tag } = {}) {

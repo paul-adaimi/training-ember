@@ -1,12 +1,12 @@
 <div class="event-card" onclick={{action "showEvent"}}>
-  <div onclick={{perform updateIsFavoriteTask}} class="event-card__like-button js-like-button {{if isFavorite "event-card__like-button_liked"}}"></div>
-  <img src='/images/events/event-{{id}}.png' class="event-card__image" />
+  <div onclick={{perform updateIsFavoriteTask}} class="event-card__like-button js-like-button {{if event.isFavorite "event-card__like-button_liked"}}"></div>
+  <img src='/images/events/event-{{event.id}}.png' class="event-card__image" />
   <div class="event-card__details">
     <div class="event-card__from-to">
       {{dateString}}
     </div>
     <div class="event-card__title">
-      {{title}}
+      {{event.title}}
     </div>
     <div class="event-card__timing-and-location">
       <img class="event-card__icon" src="/images/icons/time.svg">
@@ -14,10 +14,10 @@
     </div>
     <div class="event-card__timing-and-location">
       <img class="event-card__icon" src="/images/icons/location.svg">
-      {{location}}
+      {{event.location}}
     </div>
     <div class="event-card__tags">
-      {{#each tags as |tag|}}
+      {{#each event.tags as |tag|}}
         <div class="event-card__tag"># {{tag.title}}</div>
       {{/each}}
     </div>

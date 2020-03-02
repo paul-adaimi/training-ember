@@ -11,6 +11,9 @@
 </div>
 
 <div class="homepage">
+  {{#if isLoading}}
+    Loading Page...
+  {{/if}}
   {{tags-bar
     tags=tags
     onFilter=(action "onFilter")
@@ -22,11 +25,12 @@
 
     {{events-list
       events=events
+      loadingMoreEvents=loadingMoreEvents
     }}
 
     {{#if hasMoreEvents}}
-      <div onclick={{action 'seeMoreEvents'}} class="homepage-content__see-more">
-        <button class="tags-bar__tag tags-bar__tag_color_orange">See more events (213)</button>
+      <div class="homepage-content__see-more">
+        <button onclick={{action 'seeMoreEvents'}} class="tags-bar__tag tags-bar__tag_color_orange">See more events (213)</button>
       </div>
     {{/if}}
   </div>

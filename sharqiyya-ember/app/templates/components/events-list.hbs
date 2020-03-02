@@ -4,14 +4,10 @@
     {{event-card
       day=day
       event=event
-
-      isFavorite=event.isFavorite
-      tags=event.tags
-      id=event.id
-      dates=event.eventDates
-      title=event.title
-      location=event.location
     }}
   {{/each}}
 
+  {{#if loadingMoreEvents}}
+    Loading Events...
+  {{/if}}
 </div>

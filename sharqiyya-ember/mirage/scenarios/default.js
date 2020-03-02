@@ -99,42 +99,43 @@ Text adaptation by: Hala Omran and Junaid Sarieddine / Light design and technica
 
   for (let i = 0; i < range + 1; i++) {
     event7.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
     event6.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
     event5.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
     event4.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
     event3.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
 
     event2.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
 
     event.createEventDate({
-      date: moment('01-11-2020').add(i, 'days').calendar(),
+      date: moment('01-11-2020').add(i, 'days').format('M-D-YYYY'),
       startTime: '9:00am',
       endTime: '11:00pm'
     });
+
   }
 
   event.tags = allTags;
