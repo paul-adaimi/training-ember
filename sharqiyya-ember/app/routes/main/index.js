@@ -2,12 +2,12 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
 
-  setupController(controller, model) {
-    this._super(controller, model);
+  setupController(controller) {
     controller.setupControllerTask.perform();
   },
 
   resetController(controller) {
-    controller.resetControllerTask.perform();
+    controller.resetProperties();
+    return this._super(...arguments);
   }
 });

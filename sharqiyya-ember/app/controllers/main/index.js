@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { task } from 'ember-concurrency';
 import { all } from 'rsvp';
 import { computed } from '@ember/object';
+import { readOnly } from '@ember/object/computed';
 
 export default Controller.extend({
 
@@ -13,9 +14,13 @@ export default Controller.extend({
 
   pageSize: 4,
 
-  isLoading: false,
+  isLoading: computed('setupControllerTask.isRunning', function() {
+    return this.setupControllerTask.isRunning;
+  }),
 
-  loadingMoreEvents: false,
+  loadingMoreEvents: computed('findEvents.isRunning', function() {
+    return this.findEvents.isRunning;
+  }),
 
   events: computed(() => []),
 
@@ -24,25 +29,26 @@ export default Controller.extend({
   hasMoreEvents: true,
 
   setupControllerTask: task(function * () {
-    this.set('isLoading', true);
     yield all([this.findEvents.perform(), this.findTags.perform()]);
-    this.set('isLoading', false);
   }),
 
-  resetControllerTask: task(function * () {
-    yield all([this.set('events', []), this.set('pageNumber', 1), this.set('hasMoreEvents', true)]);
-  }),
+  resetProperties() {
+    this.setProperties({
+      events: [],
+      pageNumber: 1,
+      hasMoreEvents: true
+    });
+  },
 
   findTags: task(function * () {
     let tags = yield this.store.findAll('tag');
     this.set('tags', tags);
   }),
 
-  findEvents: task(function * ({ tag } = {}) {
-    this.set('loadingMoreEvents', true);
+  findEvents: task(function * () {
     let events = yield this.store.query('event', {
       include: 'event-dates,tags',
-      tag: this.filter || tag,
+      tag: this.filter,
       page: {
         number: this.pageNumber,
         size: this.pageSize
@@ -54,8 +60,6 @@ export default Controller.extend({
     if (events.length < this.pageSize) {
       this.set('hasMoreEvents', false);
     }
-
-    this.set('loadingMoreEvents', false);
   }),
 
   // findModel: task(function * ({ tag } = {}) {
@@ -78,10 +82,9 @@ export default Controller.extend({
 
   actions: {
     onFilter(tag) {
-      this.set('events', []);
-      this.set('pageNumber', 1);
+      this.resetProperties();
       this.set('filter', tag);
-      this.findEvents.perform({ tag });
+      this.findEvents.perform();
     },
 
     seeMoreEvents() {

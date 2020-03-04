@@ -21,9 +21,7 @@ export default function() {
     let pageSize = queryParams['page[size]'];
 
     if (queryParams.tag === undefined) {
-      allEventsArray.splice(0, (pageNumber - 1) * pageSize);
-      allEventsArray.splice(pageSize, 9e9);
-      return allEvents;
+      return allEventsArray.splice((pageNumber - 1) * pageSize, pageNumber * pageSize);
     }
 
     let eventTagId = schema.tags.where({ title: queryParams.tag }).models[0].attrs.id;
@@ -33,6 +31,9 @@ export default function() {
         allEventsArray.splice(i, 1);
       }
     });
+
+    allEventsArray.splice(0, (pageNumber - 1) * pageSize);
+    allEventsArray.splice(pageSize, Infinity);
 
     return allEvents;
   });
